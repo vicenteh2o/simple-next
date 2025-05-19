@@ -1,3 +1,6 @@
+import AddToCart from "../AddToCart"
+import QuantitySelector from "../QuatitySelector"
+
 export default async function ProductPage({params}: any) {
     const product = await fetch(`https://rickandmortyapi.com/api/character/${params.id}`).then(res => res.json())
     return (
@@ -5,6 +8,8 @@ export default async function ProductPage({params}: any) {
             <h1>{product.name}</h1>
             <p>Status: {product.status}</p>
             <p>species: {product.species}</p>
+            <QuantitySelector />
+            <AddToCart productId={params.id}/>
         </div>
     )
 }
